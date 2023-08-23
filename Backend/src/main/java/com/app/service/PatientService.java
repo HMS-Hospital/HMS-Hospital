@@ -10,5 +10,6 @@ public interface PatientService {
 	public String editProfile(PatientDTO updatedPatient);
 	public Patient findPatientById(int p_id);
 	public void deletePatient(int id);
+	
 	String addPatient(PatientDTO p);
 }
