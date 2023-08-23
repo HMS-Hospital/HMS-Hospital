@@ -4,6 +4,7 @@ package com.app.controller;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,10 +48,16 @@ public class PatientController {
 		return ResponseEntity.ok(patientService.addPatient(newPatient));
 	}
 	
-	@PutMapping("/edit")
-	public ResponseEntity<?> editProfile(@RequestBody PatientDTO updatedPatient){
-		return ResponseEntity.ok(patientService.editProfile(updatedPatient));
-	}
+//	@PutMapping("/edit")
+//	public ResponseEntity<?> editProfile(@RequestBody PatientDTO updatedPatient){
+//		return ResponseEntity.ok(patientService.editProfile(updatedPatient));
+//	}
+	
+//	@PutMapping()
+//	public ResponseEntity<?> editProfile(@RequestBody PatientDTO updatedPatient,@PathVariable Long id){
+//		patientService.getPatientDetails(updatedPatient.getUser_id(),updatedPatient.getId());
+//		return ResponseEntity.ok(patientService.editProfile(updatedPatient,id),HttpStatus.OK);
+//	}
 	
 	@GetMapping("/appointments/{id}")
 	public ResponseEntity<?> getAppointmentsForPatient(@PathVariable int id){ 
@@ -64,5 +71,11 @@ public class PatientController {
 		return ResponseEntity.ok("Patient Deleted");
 		
 	}
+	
+//	@DeleteMapping("/{id}")
+//	public ResponseEntity<?> deletePatient(@RequestParam int id){
+//		return ResponseEntity.ok("Patient Deleted");
+//		
+//	}
 	
 }
