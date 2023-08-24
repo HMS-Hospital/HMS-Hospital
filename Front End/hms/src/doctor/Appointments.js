@@ -9,7 +9,7 @@ function DoctorAppointment() {
 
     var fetchData = () => {
         console.log(1);
-        axios.get(`http://localhost:7070/patient/appointments/${sessionStorage.getItem("id")}`, {
+        axios.get(`http://localhost:7070/doctor/appointments/${sessionStorage.getItem("id")}`, {
         }).then((response) => {
             console.log(response)
             setAppointments(response.data);
@@ -41,7 +41,7 @@ function DoctorAppointment() {
                                         Id
                                     </td>
                                     <td>
-                                        Doctor
+                                        patient Name
                                     </td>
                                     <td>
                                         Appointment Date
@@ -59,7 +59,7 @@ function DoctorAppointment() {
                                                 {appointment.id}
                                             </td>
                                             <td>
-                                                {appointment.doctorname}
+                                                {appointment.patientname}
                                             </td>
                                             <td>
                                                 {appointment.appoint.substring(0, 10) + ' ' + appointment.appoint.substring(11, 16)}

@@ -23,7 +23,7 @@ function PatientProfile() {
     var update = () => {
         setStatus("display");
         axios({
-            url:"http://localhost:8080/patient/edit",
+            url:"http://localhost:7070/patient/edit",
             method:"put",
             data:user
         }).then((response) => {

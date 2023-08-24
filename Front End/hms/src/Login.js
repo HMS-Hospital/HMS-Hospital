@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import './login.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import axios from "axios";
 
 //import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import Header from './Header';
 
-function Login2()
+function Login()
 {
 
     var [loginDetails, setLoginDetails] = useState({ username: "", password: "" });
@@ -107,4 +106,4 @@ function Login2()
   );
 };
 
-export default Login2;
+export default Login;
