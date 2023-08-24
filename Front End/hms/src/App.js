@@ -10,6 +10,7 @@ import PatientProfile from "./patient/PatientProfile";
 import PatientAppointment from "./patient/Appointments";
 import PatientPrescription from "./patient/Prescriptions";
 import Register from "./Register";
+import Doctor_register from "./Doctor_registration";
 import BookAppointment from "./patient/BookAppointment";
 import ProtectedRoute from "./ProtectedRoute";
 import Doctor from "./doctor/Doctor";
@@ -26,6 +27,8 @@ function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/register" element={<Register />}></Route>
+            <Route path="/doctorregister" element={<Doctor_register />}></Route>
+
             <Route path="/appointment" element={<ProtectedRoute />}>
                 <Route path="" element={<BookAppointment />} />
             </Route>

@@ -123,7 +123,7 @@ function BookAppointment() {
                                     <div className="col-sm-10">
                                         <div className="form-group">
                                             <p className="form-label">Appointment Date</p>
-                                            <input type={"datetime-local"} name={"appoint"} value={appointdate} onChange={handleChange} className={"input-group date"} />
+                                            <input type={"date"} name={"appoint"} value={appointdate} onChange={handleChange} className={"input-group date"} />
                                         </div>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 
 
-function Register(){
+function Doctor_register(){
 
   const centerDivStyle = {
     display: 'flex',
@@ -25,7 +25,7 @@ function Register(){
 
   
     
-    var [ specificuser,setSpecificuser ] =useState({name:"",dob:"",gender:"",type:"",state:"",city:"",address:"",pincode:"",mobileNo:"",emailid:"", user:{username:"",password:""}})
+    var [ specificuser,setSpecificuser ] =useState({name:"",dob:"",gender:"",specialization:"",joinDate:"",mobileNo:"",emailid:"", user:{username:"",password:""},dept:{id:1,department:""}})
     var nav=useNavigate();
   
 //     var body = {
@@ -43,6 +43,9 @@ function Register(){
 //     "username":"pd123",
 //     "password":"pd123"
 //     }
+//     "dept":{
+  //     "department":"pd123"
+  //     }
 // }
 
 // axios({
@@ -72,17 +75,16 @@ var userhandler=(args)=>{
   setSpecificuser({...specificuser,user:{...newuser}})
 }
 
-var Reset=()=>{
-  setSpecificuser({ name:"",dob:"",gender:"",type:"",state:"",city:"",address:"",pincode:"",mobileNo:"",emailid:"", user:{username:"",password:"" }});
-}
-//                 {name:"",dob:"",gender:"",specialization:"",joinDate:"",mobileNo:"",emailid:"", user:{username:"",password:""},dept:{department:""}}
+// var Reset=()=>{
+//   setSpecificuser({ name:"",dob:"",gender:"",type:"",state:"",city:"",address:"",pincode:"",mobileNo:"",emailid:"", user:{username:"",password:"" }});
+// }
 
 var Submit=()=>{
 console.log("aa gaya submit me")
 console.log(specificuser)
     axios({
     method: 'post',
-    url: 'http://localhost:7070/patient/signup',
+    url: 'http://localhost:7070/doctor/add',
     data: specificuser
 })
 .then(function (response) {
@@ -117,31 +119,18 @@ return <>
                 onChange={HandleChange} 
               />
             </div>
-         <br></br>
-
-            <div className='mb-3'>
-              <label htmlFor=''>Address</label>
-              <input type={"text"} name="address" value={specificuser.address} onChange={HandleChange}/>
-            </div>
-            <br></br>
-       
+         <br></br>       
 
                   <div className="row">
                 <div className="col-md-6 mb-4">
 
-                  <select className="form-select" aria-label="Default select example" name="state" onChange={HandleChange}>
-                    <option  value={"State"}  >State</option>
-                    <option  value={"Maharastra"} >Maharastra</option>
-                    <option  value={"Punjab"}  >Punjab</option>
-                    <option  value={"chennai"}  >chennai</option>
+                  <select className="form-select" aria-label="Default select example" name="specialization" onChange={HandleChange}>
+                    <option  value={"specialization"}  >specialization</option>
+                    <option  value={"Dermatologist"} >Dermatologist</option>
+                    <option  value={"Neurologist"}  >Neurologist</option>
+                    <option  value={"Dentist"}  >Dentist</option>
                   </select>
 
-                  <select className="form-select" aria-label="Default select example" name="city" onChange={HandleChange}>
-                    <option  value={"City"}>City</option>
-                    <option  value={"Pune"} >Pune</option>
-                    <option  value={"Mumbai"} >Mumbai</option>
-                    <option  value={"Latur"} >Latur</option>
-                  </select>
 
                 </div>
 
@@ -156,6 +145,12 @@ return <>
               </div>
               <br></br>
 
+              <div className="form-outline mb-4">
+              <label className="form-label" >joinDate</label>
+                <input type={"text"} name="joinDate" value={specificuser.joinDate} onChange={HandleChange} className="form-control form-control-lg" />
+              </div>
+              <br></br>
+
               {/* <select className="form-select" aria-label="Default select example" name="type" onChange={HandleChange}>
                   <option  value={"A_PLUS"}>Gender</option>
                     <option  value={"M"}>MALE</option>
@@ -163,17 +158,6 @@ return <>
                     <option  value={"O"} >OTHER</option>
                   </select> */}
 
-              <select className="form-select" aria-label="Default select example" name="type" onChange={HandleChange}>
-                  <option  value={"A_PLUS"}>Blood Type</option>
-                    <option  value={"A_PLUS"}>A(+ve)</option>
-                    <option  value={"A_MINUS"} >A(-ve)</option>
-                    <option  value={"B_MINUS"} >B(-ve)</option>
-                    <option  value={"B_PLUS"} >B(+ve)</option>
-                    <option  value={"O_PLUS"} >O(+ve)</option>
-                    <option  value={"O_MINUS"} >O(-ve)</option>
-                    <option  value={"AB_PLUS"} >AB(+ve)</option>
-                    <option  value={"AB_MINUS"} >AB(-ve)</option>
-                  </select>
 
 <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
@@ -202,10 +186,6 @@ return <>
 
                   <br></br>
                   <br></br>
-              <div className="form-outline mb-4">
-              <label className="form-label" >Pincode</label>
-                <input type={"text"} name="pincode" value={specificuser.pincode} onChange={HandleChange} className="form-control form-control-lg" />
-              </div>
 
               <br></br>
               <div className="form-outline mb-4">
@@ -220,6 +200,32 @@ return <>
                 
               </div>
               <br></br>
+
+              <div className="form-outline mb-4">  
+              <label className="form-label" >Department</label>
+                <input type={"text"} name="departmrnt" value={specificuser.dept.id}  onChange={userhandler} className="form-control form-control-lg" />
+              </div>
+              
+
+              {/* <div className="row">
+                <div className="col-md-6 mb-4">
+
+                  <select className="form-select" aria-label="Default select example" name="department" onChange={HandleChange}>
+                    <option  value={1}  >specialization</option>
+                    <option  value={1} >Dermatologist</option>
+                    <option  value={2}  >Neurologist</option>
+                    <option  value={3}  >Dentist</option>
+                  </select>
+
+
+                </div>
+
+                <br></br>
+              
+              </div> */}
+
+              <br></br>
+            
 
               <div className="form-outline mb-4">  
               <label className="form-label" >User Name</label>
@@ -252,4 +258,4 @@ return <>
 
 }
 
-export default Register;
+export default Doctor_register;
