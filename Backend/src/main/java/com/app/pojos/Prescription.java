@@ -11,17 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="Prescription")
 public class Prescription {
@@ -42,18 +34,18 @@ public class Prescription {
 	@OneToMany(mappedBy ="prescriptionid", cascade =  CascadeType.ALL, orphanRemoval = true)
 	private List<PrescriptionDetails> prescriptiondetails=new ArrayList<>();
 
-//	public Prescription() 
-//	{
-//		
-//	}
+	public Prescription() 
+	{
+		
+	}
 
-//	public Prescription(Doctor doc, Patient patient, LocalDate date, List<PrescriptionDetails> prescriptiondetails) {
-//		super();
-//		this.doc = doc;
-//		this.patient = patient;
-//		this.date = date;
-//		this.prescriptiondetails = prescriptiondetails;
-//	}
+	public Prescription(Doctor doc, Patient patient, LocalDate date, List<PrescriptionDetails> prescriptiondetails) {
+		super();
+		this.doc = doc;
+		this.patient = patient;
+		this.date = date;
+		this.prescriptiondetails = prescriptiondetails;
+	}
 
 
 	

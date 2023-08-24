@@ -5,11 +5,6 @@ import java.util.Set;
 
 import com.app.pojos.Service;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class BillDTO {
 	private int id;
 	private String patientname;

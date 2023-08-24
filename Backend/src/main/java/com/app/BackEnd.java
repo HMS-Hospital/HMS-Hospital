@@ -11,15 +11,12 @@ public class BackEnd {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackEnd.class, args);
-		
-		
 	}
-	
 	@Bean // equivalent to <bean id ..../> in xml file
 	public ModelMapper mapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		return modelMapper;
 	}
-
+//latest
 }

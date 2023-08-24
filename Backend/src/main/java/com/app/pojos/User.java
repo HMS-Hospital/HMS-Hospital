@@ -7,16 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="user")
 public class User {
@@ -31,9 +23,9 @@ public class User {
 	private Role userRole;
 	private UserValidity validity;
 	
-//	public User() {
-//		
-//	}
+	public User() {
+		
+	}
 
 	
 	public UserValidity getValidity() {
@@ -54,11 +46,11 @@ public class User {
 	
 	
 	
-//	public User(String username, String password, Role userRole) {
-//		this.username = username;
-//		this.password = password;
-//		this.userRole = userRole;
-//	}
+	public User(String username, String password, Role userRole) {
+		this.username = username;
+		this.password = password;
+		this.userRole = userRole;
+	}
 
 	public int getId() {
 		return id;

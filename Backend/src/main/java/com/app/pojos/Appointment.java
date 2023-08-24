@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,20 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-
-@Setter
-@Getter
-@NoArgsConstructor
 @Entity
 public class Appointment {
 	@Id
@@ -45,7 +37,7 @@ public class Appointment {
     private String specialization;
     
     @JsonProperty(access = Access.READ_ONLY)
-    private LocalDateTime appoint;
+    private LocalDate appoint;
     
     @Enumerated(EnumType.ORDINAL)
     private Appstatus status;
@@ -90,11 +82,11 @@ public class Appointment {
 		this.specialization = specialization;
 	}
 
-	public LocalDateTime getAppoint() {
+	public LocalDate getAppoint() {
 		return appoint;
 	}
 
-	public void setAppoint(LocalDateTime appoint) {
+	public void setAppoint(LocalDate appoint) {
 		this.appoint = appoint;
 	}
 

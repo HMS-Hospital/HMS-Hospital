@@ -1,22 +1,18 @@
 package com.app.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.app.pojos.Appstatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @JsonInclude(Include.NON_NULL)
-@Getter
-@Setter
 public class AppointmentDTO {
 	private int id;
 	private String patientname;
 	private String doctorname;
-	private LocalDateTime appoint;
+	private LocalDate appoint;
 	private Appstatus status;
 	private int pid;
 	
@@ -24,7 +20,7 @@ public class AppointmentDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AppointmentDTO(int id, String patientname, LocalDateTime appoint, Appstatus status,int pid) {
+	public AppointmentDTO(int id, String patientname, LocalDate appoint, Appstatus status,int pid) {
 		this.id = id;
 		this.patientname = patientname;
 		this.appoint = appoint;
@@ -40,7 +36,7 @@ public class AppointmentDTO {
 		this.pid = pid;
 	}
 	
-	public AppointmentDTO(int id, LocalDateTime appoint, String doctorname,Appstatus status) {
+	public AppointmentDTO(int id, LocalDate appoint, String doctorname,Appstatus status) {
 		this.id = id;
 		this.doctorname = doctorname;
 		this.appoint = appoint;
@@ -76,10 +72,10 @@ public class AppointmentDTO {
 	public void setPatientname(String patientname) {
 		this.patientname = patientname;
 	}
-	public LocalDateTime getAppoint() {
+	public LocalDate getAppoint() {
 		return appoint;
 	}
-	public void setAppoint(LocalDateTime appoint) {
+	public void setAppoint(LocalDate appoint) {
 		this.appoint = appoint;
 	}
 	public Appstatus getStatus() {

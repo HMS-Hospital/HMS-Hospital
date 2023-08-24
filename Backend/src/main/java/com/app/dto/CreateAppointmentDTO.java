@@ -1,21 +1,17 @@
 package com.app.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class CreateAppointmentDTO {
 	private int specialization;
 	private int d_id;
 	private int p_id;
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",shape = Shape.STRING)
-	private LocalDateTime appoint;
+	@JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
+	private LocalDate appoint;
 	
 	public int getSpecialization() {
 		return specialization;
@@ -35,10 +31,10 @@ public class CreateAppointmentDTO {
 	public void setP_id(int p_id) {
 		this.p_id = p_id;
 	}
-	public LocalDateTime getAppoint() {
+	public LocalDate getAppoint() {
 		return appoint;
 	}
-	public void setAppoint(LocalDateTime appoint) {
+	public void setAppoint(LocalDate appoint) {
 		this.appoint = appoint;
 	}
 	

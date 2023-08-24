@@ -1,10 +1,5 @@
 package com.app.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class CreatePrescriptionDetailsDTO {
 
   private int m_id;

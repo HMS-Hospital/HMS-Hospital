@@ -2,7 +2,7 @@ package com.app.service;
 
 import javax.transaction.Transactional;
 
-import org.modelmapper.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.app.dao.PatientDao;
@@ -15,25 +15,15 @@ import com.app.pojos.User;
 public class PatientServiceImpl implements PatientService {
 	@Autowired
 	public PatientDao patientDao;
-
-	@Autowired
-	private ModelMapper mapper;
 	
-//	@Override
-//	public String addPatient(Patient p) {
-//			patientDao.save(p);
-//			return "Patient Added";
-//		
-//	}
-
+	
 	@Override
-	public String addPatient(PatientDTO p) {
-			Patient patient = mapper.map(p, Patient.class);
-			patientDao.save(patient);
+	public String addPatient(Patient p) {
+			patientDao.save(p);
 			return "Patient Added";
 		
 	}
-
+	
 	@Override
 	public Patient getPatientDetails(User u) {
 		return patientDao.findPatientByUser(u).orElse(null);	
@@ -62,7 +52,5 @@ public class PatientServiceImpl implements PatientService {
 	public void deletePatient(int id) {
 		patientDao.deleteById(id);
 	}
-
-	
 
 }
