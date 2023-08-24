@@ -36,13 +36,6 @@ public class DoctorServiceImpl implements DoctorService {
 	@Value("${spring.mail.username}")
 	private String email;
 	
-//	@Override
-//	public void addDoctor(Doctor d) {
-//		Department dept = deptDao.findById(d.getDept().getId()).orElseThrow(()->new ResourceNotFoundException("no such department"));
-//		d.setDept(dept);
-//		doctorDao.save(d);
-//	}
-
 	@Override
 	public void addDoctor(Doctor d) {
 		Department dept = deptDao.findById(d.getDept().getId()).orElseThrow(()->new ResourceNotFoundException("no such department"));
@@ -50,6 +43,18 @@ public class DoctorServiceImpl implements DoctorService {
 		doctorDao.save(d);
 	}
 	
+//	@Override
+//	public void addDoctor(DoctorRegistrationDTO d) {
+//		Department dept = deptDao.findById(d.getDept_id()).orElseThrow(()->new ResourceNotFoundException("no such department"));
+//		Doctor doctor = mapper.map(d,Doctor.class);
+//		doctor.setDept(dept);
+//		
+////		details.getUser().setUserRole(Role.DOCTOR);
+////		details.getUser().setValidity(UserValidity.ACTIVE);
+//		
+//		doctorDao.save(doctor);
+//	}
+
 	@Override
 	public Doctor getDoctorDetails(User u) {
 		return doctorDao.findDoctorByUser(u).orElse(null);

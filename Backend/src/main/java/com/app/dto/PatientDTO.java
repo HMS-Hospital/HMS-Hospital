@@ -6,11 +6,6 @@ import com.app.pojos.BloodType;
 import com.app.pojos.Gender;
 import com.app.pojos.Role;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class PatientDTO {
 	private int id;
 	private String name;

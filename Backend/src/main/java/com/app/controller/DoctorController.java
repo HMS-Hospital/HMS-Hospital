@@ -1,6 +1,6 @@
 package com.app.controller;
 
-//import java.util.stream.Collectors;
+
 
 import java.util.stream.Collectors;
 
@@ -40,6 +40,12 @@ public class DoctorController {
 		doctorService.addDoctor(details);
 		return ResponseEntity.ok("Doctor Added");
 	}
+	
+//	@PostMapping("/add")
+//	public ResponseEntity<?> addDoctor(@RequestBody DoctorRegistrationDTO details){
+//		doctorService.addDoctor(details);
+//		return ResponseEntity.ok("Doctor Added");
+//	}
 	
 	@GetMapping("/appointments/{id}")
 	public ResponseEntity<?> getAppointmentsForDoctor(@PathVariable int id){ 

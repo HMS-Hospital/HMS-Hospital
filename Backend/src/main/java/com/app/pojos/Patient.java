@@ -12,22 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="patient")
 public class Patient {
@@ -57,34 +48,31 @@ public class Patient {
 	@JoinColumn(name = "user_id")
 	private User user;
 	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL,orphanRemoval = true)
-	
 	private List<Prescription> prescription=new ArrayList<>();
 	
 	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL,orphanRemoval = true)
-	@JsonIgnore
 	private List<Bill> bills=new ArrayList<Bill>();
 	
 	@OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
-	@JsonIgnore
 	private List<Appointment> appointments = new ArrayList<Appointment>();
 	
-//	public Patient(String name, LocalDate dob, Gender gender, BloodType type, String address, String state, String city,
-//			int pincode, String mobileNo, String emailid) {
-//		this.name = name;
-//		this.dob = dob;
-//		this.gender = gender;
-//		this.type = type;
-//		this.address = address;
-//		this.state = state;
-//		this.city = city;
-//		this.pincode = pincode;
-//		this.mobileNo = mobileNo;
-//		this.emailid = emailid;
-//	}
-//
-//	public Patient() {
-//		
-//	}
+	public Patient(String name, LocalDate dob, Gender gender, BloodType type, String address, String state, String city,
+			int pincode, String mobileNo, String emailid) {
+		this.name = name;
+		this.dob = dob;
+		this.gender = gender;
+		this.type = type;
+		this.address = address;
+		this.state = state;
+		this.city = city;
+		this.pincode = pincode;
+		this.mobileNo = mobileNo;
+		this.emailid = emailid;
+	}
+
+	public Patient() {
+		
+	}
 		
 	@Override
 	public String toString() {

@@ -7,16 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@NoArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name="prescription_dtls")
 public class PrescriptionDetails {
@@ -36,19 +28,19 @@ public class PrescriptionDetails {
 	@JoinColumn(name="medicine_id",nullable = false)
 	private Medicine medicineid;
 	
-//	public PrescriptionDetails() {
-//		
-//	}
-//
-//	public PrescriptionDetails(String dosage, String duration, int quantity, Prescription prescriptionid,
-//			Medicine medicineid) {
-//		super();
-//		this.dosage = dosage;
-//		this.duration = duration;
-//		this.quantity = quantity;
-//		this.prescriptionid = prescriptionid;
-//		this.medicineid = medicineid;
-//	}
+	public PrescriptionDetails() {
+		
+	}
+
+	public PrescriptionDetails(String dosage, String duration, int quantity, Prescription prescriptionid,
+			Medicine medicineid) {
+		super();
+		this.dosage = dosage;
+		this.duration = duration;
+		this.quantity = quantity;
+		this.prescriptionid = prescriptionid;
+		this.medicineid = medicineid;
+	}
 
 	
 	
