@@ -23,6 +23,10 @@ function PatientAppointment() {
         })
     }
 
+    var nothing = (id)=>{
+                        window.alert("pay karne ka baki hai filal")
+    }
+
     return <div className="container">
         <div className="card" style={{ boxShadow: "0px 0px 5px grey" }}>
 
@@ -69,7 +73,9 @@ function PatientAppointment() {
                                             </td>
                                             <td>
                                                 {
-                                                    appointment.status=="ATTENDED" || appointment.status=="CANCELLED"?"-" :<input type={"button"} value={"Cancel"} className='btn btn-danger' onClick={()=>{
+                                                    appointment.status=="ATTENDED" || appointment.status=="CANCELLED"|| appointment.status=="ATTENDED_AND_PRESCRIP"||appointment.status=="ATTENDED_AND_BILL_GENERATED"?appointment.status=="ATTENDED_AND_BILL_GENERATED"?<input type={"button"} value={"pay"} className='btn btn-success' onClick={()=>{
+                                                        nothing(appointment.id)
+                                                    }}></input> :"-" :<input type={"button"} value={"Cancel"} className='btn btn-danger' onClick={()=>{
                                                         cancel(appointment.id)
                                                     }}></input>
                                                 }

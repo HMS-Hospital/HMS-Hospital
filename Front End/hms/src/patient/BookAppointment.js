@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import book from "../images/book.png";
 function BookAppointment() {
+    const navigate = useNavigate();
 
     var [details, setDetails] = useState({ p_id: "", d_id: "", specialization: "", appoint: "" })
     var [appointdate,setAppointdate]=useState("");
@@ -59,7 +60,8 @@ function BookAppointment() {
             .then(function (response) {
                 console.log(response.data);
                 // if(response.data=="Appointment Booked")
-
+                navigate("/patient/profile");
+                
             })
             .catch(function (error) {
                 console.log(error);

@@ -10,7 +10,7 @@ import PatientProfile from "./patient/PatientProfile";
 import PatientAppointment from "./patient/Appointments";
 import PatientPrescription from "./patient/Prescriptions";
 import Register from "./Register";
-import Doctor_register from "./Doctor_registration";
+import Doctor_register from "./Doctor_registration copy";
 import BookAppointment from "./patient/BookAppointment";
 import ProtectedRoute from "./ProtectedRoute";
 import Doctor from "./doctor/Doctor";
@@ -28,6 +28,8 @@ function App() {
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/doctorregister" element={<Doctor_register />}></Route>
+            {/* <Route path="/addpris" element={<DoctorPrescription />}></Route> */}
+
 
             <Route path="/appointment" element={<ProtectedRoute />}>
                 <Route path="" element={<BookAppointment />} />
@@ -37,7 +39,7 @@ function App() {
                     <Route path="" element={<DoctorProfile />} />
                     <Route path="profile" element={<DoctorProfile/>} />
                     <Route path="appointment" element={<DoctorAppointment />} />
-                    <Route path="prescription" element={<DoctorPrescription />} />
+                    <Route path="prescription/:id" element={<DoctorPrescription />} />
                 </Route>
             </Route>
             <Route path="/patient" element={<ProtectedRoute />}>

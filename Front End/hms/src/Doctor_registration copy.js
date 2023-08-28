@@ -1,5 +1,5 @@
 
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { Link ,useNavigate } from 'react-router-dom';
 import axios from "axios";
 //import { toast } from 'react-toastify'
@@ -14,6 +14,17 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 function Doctor_register(){
 
+  var [departments, setDepartments] = useState([]);
+
+  useEffect(() => {
+   
+    axios.get("http://localhost:7070/appointment/getdept", {
+
+    }).then((response) => {
+        setDepartments([...response.data]);
+    })
+}, [])
+
   const centerDivStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -25,7 +36,7 @@ function Doctor_register(){
 
   
     
-    var [ specificuser,setSpecificuser ] =useState({name:"",dob:"",gender:"",specialization:"",joinDate:"",mobileNo:"",emailid:"", user:{username:"",password:""},dept:{id:1,department:""}})
+    var [ specificuser,setSpecificuser ] =useState({name:"",dob:"",gender:"",specialization:"",joinDate:"",mobileNo:"",emailid:"", user:{username:"",password:""},dept:{id:"",department:""}})
     var nav=useNavigate();
   
 //     var body = {
@@ -74,6 +85,13 @@ var userhandler=(args)=>{
   newuser[args.target.name]=args.target.value;
   setSpecificuser({...specificuser,user:{...newuser}})
 }
+
+var depthandler=(args)=>{
+  var newdept={ ...specificuser.dept};
+  newdept[args.target.name]=args.target.value;
+  setSpecificuser({...specificuser,dept:{...newdept}})
+}
+
 
 // var Reset=()=>{
 //   setSpecificuser({ name:"",dob:"",gender:"",type:"",state:"",city:"",address:"",pincode:"",mobileNo:"",emailid:"", user:{username:"",password:"" }});
@@ -201,12 +219,33 @@ return <>
               </div>
               <br></br>
 
+
+
               <div className="form-outline mb-4">  
               <label className="form-label" >Department</label>
-                <input type={"text"} name="departmrnt" value={specificuser.dept.id}  onChange={userhandler} className="form-control form-control-lg" />
+                <input type={"text"} name="departmrnt" value={specificuser.dept.id}  onChange={depthandler} className="form-control form-control-lg" />
               </div>
               
 
+              <div className="form-group">
+                                            <p className="form-label">Department</p>
+                                            <select className="form-select" aria-label="Default select example" name="id" value={specificuser.dept.id} onChange={(event) => {
+        
+        depthandler(event);
+    }}>
+                                                <option value={"default"}>
+                                                    Select Department
+                                                </option>
+                                                {
+
+                                                    departments.map(dept => {
+                                                        return <option value={dept.id} key={dept.id}>
+                                                            {dept.department}
+                                                        </option>
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
               {/* <div className="row">
                 <div className="col-md-6 mb-4">
 
