@@ -5,16 +5,21 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
+import com.app.dao.AppointmentDao;
 import com.app.dao.DoctorDao;
 import com.app.dao.MedicineDao;
 import com.app.dao.PatientDao;
 import com.app.dao.PrescriptionDao;
+import com.app.dao.PrescriptionDetailsDao;
 import com.app.dto.CreatePrescriptionDTO;
 import com.app.dto.CreatePrescriptionDetailsDTO;
+import com.app.dto.PrescriptionDTO;
+import com.app.pojos.Appointment;
 import com.app.pojos.Doctor;
 import com.app.pojos.Medicine;
 import com.app.pojos.Patient;
@@ -27,17 +32,25 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 	@Autowired
 	private DoctorDao docdao;
 	@Autowired
+	private AppointmentDao appointdao;
+	@Autowired
 	private PatientDao patdao;
 	@Autowired
 	private MedicineDao meddao;
 	@Autowired
 	private PrescriptionDao prescripdao;
+	@Autowired
+	private PrescriptionDetailsDao prescripDtlsdao;
+	@Autowired
+	private ModelMapper mapper;
 	
 	@Override
-	public String savePrescription(CreatePrescriptionDTO p) {
-		
-	Doctor d=docdao.findById(p.getDoc_id()).orElse(null);
-	Patient pat=patdao.findById(p.getP_id()).orElse(null);
+	public PrescriptionDTO savePrescription(CreatePrescriptionDTO p, int apptid) {
+		Appointment appoint = appointdao.findById(apptid).orElse(null);
+		System.out.println("doctor hai ye"+appoint.getDoctor());
+		System.out.println("patient hai ye"+appoint.getPatient());
+	Doctor d=appoint.getDoctor();
+	Patient pat=appoint.getPatient();
 	
 	Prescription prescription=new Prescription();
 	
@@ -54,8 +67,33 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 	pat.addPrescription(prescription);
 	d.addPrescription(prescription);
 	
-	prescripdao.save(prescription);		
-		return "Prescription is added";
+	 Prescription p2 =  prescripdao.save(prescription);	
+	 
+	 PrescriptionDTO p3 = new PrescriptionDTO(p2.getId(),p2.getDoc().getName(),p2.getPatient().getName(),p2.getDate());
+	
+	
+	System.out.println("this is prescripton after save"+prescription);
+	
+	return p3;
+	//	return "Prescription is added";
+	}
+	@Override
+	public String savePrescriptionDetails(CreatePrescriptionDetailsDTO p,int id) {
+		//find by id 1 kiya hai baad me change karo
+		Prescription pres= prescripdao.findById(id).orElse(null);
+		Medicine medicine= meddao.findById(p.getM_id()).orElse(null);
+		
+		PrescriptionDetails pres_dtls = mapper.map(p, PrescriptionDetails.class);
+
+		
+	pres_dtls.setPrescriptionid(pres);
+	pres_dtls.setMedicineid(medicine);
+	pres.addPrescriptiondetails(pres_dtls);
+	
+	
+	
+	prescripDtlsdao.save(pres_dtls);		
+		return "Prescription Details is added";
 	}
 
 	@Override

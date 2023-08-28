@@ -14,8 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.ToString;
+
 @Entity
 @Table(name="Prescription")
+@ToString
 public class Prescription {
 	
 	@Id
@@ -100,5 +103,6 @@ public class Prescription {
 		this.prescriptiondetails.add(p);
 		p.setPrescriptionid(this);
 	}
+	
 	
 }

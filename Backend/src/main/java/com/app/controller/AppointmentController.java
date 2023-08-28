@@ -49,6 +49,10 @@ public class AppointmentController {
 	public ResponseEntity<?> appointmentAttended(@PathVariable int a_id){
 		return ResponseEntity.ok(appointmentService.appointmentCompleted(a_id));
 	}
+	@PutMapping("/billGenerated/{a_id}")
+	public ResponseEntity<?> billGeneration(@PathVariable int a_id){
+		return ResponseEntity.ok(appointmentService.BillGeneratedForAppointment(a_id));
+	}
 	
 	@GetMapping("/getdept")
 	public ResponseEntity<?> getDepartmentsForAppointment(){

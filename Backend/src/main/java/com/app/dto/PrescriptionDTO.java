@@ -38,7 +38,15 @@ public class PrescriptionDTO {
 	}
 
 
-
+	public PrescriptionDTO(int id, String d_name, String p_name, LocalDate date
+			) {
+		//super();
+		this.id = id;
+		this.d_name = d_name;
+		this.p_name = p_name;
+		this.date = date;
+		//this.pdetails = pdetails;
+	}
 
 
 	public int getId() {
