@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.AppointmentDTO;
 import com.app.dto.CreateAppointmentDTO;
+import com.app.dto.PatientDTO;
 import com.app.service.AppointmentService;
 import com.app.service.DoctorService;
 
@@ -57,6 +58,7 @@ public class AppointmentController {
 	
 	@GetMapping("/getAttended")
 	public ResponseEntity<?> getAttendedAppointments(){
-		return ResponseEntity.ok(appointmentService.getAttendedAppointments().stream().map(appointment->new AppointmentDTO(appointment.getId(), appointment.getPatient().getName(),appointment.getDoctor().getName(),appointment.getStatus(),appointment.getPatient().getId())).collect(Collectors.toList()));
+		return ResponseEntity.ok(appointmentService.getAttendedAppointments().stream().map(appointment->new AppointmentDTO(appointment.getId(), appointment.getPatient().getName(),appointment.getDoctor().getName(),appointment.getAppoint(),appointment.getStatus(),appointment.getPatient().getId())).collect(Collectors.toList()));
 	}
+	
 }

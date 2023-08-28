@@ -1,6 +1,7 @@
 package com.app.controller;
 
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.AppointmentDTO;
+import com.app.dto.DoctorDTO;
 import com.app.dto.PatientDTO;
 import com.app.pojos.Patient;
 import com.app.pojos.Role;
@@ -57,6 +59,18 @@ public class PatientController {
 	public ResponseEntity<?> deletePatient(@RequestParam int id){
 		return ResponseEntity.ok("Patient Deleted");
 		
+	}
+	
+//	@GetMapping("/allpatients")
+//	public List<Patient> findAllPatient()
+//	{
+//		return patientService.getAllPatients();
+//	}
+	
+	
+	@GetMapping("/allpatients")
+	public ResponseEntity<?> findAllPatient(){
+		return ResponseEntity.ok(patientService.getAllPatients().stream().map(patient->new PatientDTO(patient.getId(),patient.getName(),patient.getEmailid(),patient.getMobileNo(),patient.getGender(),patient.getDob(),patient.getAddress(),patient.getUser().getId())).collect(Collectors.toList()));
 	}
 	
 }

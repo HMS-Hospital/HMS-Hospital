@@ -40,6 +40,18 @@ public class PatientDTO {
 		this.role=role;
 	}
 
+	public PatientDTO(int id2, String name2,String emailid,String mobileNo,Gender gender,LocalDate dob,String address, int id3) {
+		// TODO Auto-generated constructor stub
+		this.id=id2;
+		this.name=name2;
+		this.emailid = emailid;
+		this.mobileNo = mobileNo;
+		this.gender = gender;
+		this.dob = dob;
+		this.address = address;
+		this.user_id=id3;
+	}
+
 	public Role getRole() {
 		return role;
 	}
