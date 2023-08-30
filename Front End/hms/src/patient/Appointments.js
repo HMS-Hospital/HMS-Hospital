@@ -1,8 +1,12 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
+
 function PatientAppointment() {
     var [appointments, setAppointments] = useState([]);
     var [status,setStatus] = useState("");
+    var navigate = useNavigate();
+
     useEffect(() => {
         fetchData();
     }, [])
@@ -24,13 +28,15 @@ function PatientAppointment() {
     }
 
     var nothing = (id)=>{
-                        window.alert("pay karne ka baki hai filal")
+        navigate("/bill")
+
+                        // window.alert("pay karne ka baki hai filal")
     }
 
     return <div className="container">
         <div className="card" style={{ boxShadow: "0px 0px 5px grey" }}>
 
-            <div className="card-body"style={{width: "1000px"}}>
+            <div className="card-body"style={{width: "1500px"}}>
                 <h4 className="card-title">
                     Appointments
                 </h4>

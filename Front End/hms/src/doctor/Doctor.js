@@ -12,7 +12,7 @@ function Doctor() {
                             <nav className="nav flex-md-column">
                                 <Link className="nav-link active" to={"/doctor/profile"}>Profile</Link>
                                 <Link className="nav-link active" to={"/doctor/appointment"}>Appointments</Link>
-                                <Link className="nav-link active" to={"/doctor/prescription"}>Prescriptions</Link>
+                                {/* <Link className="nav-link active" to={"/doctor/prescription"}>Prescriptions</Link> */}
                             </nav>
                         </div>
                     </div>

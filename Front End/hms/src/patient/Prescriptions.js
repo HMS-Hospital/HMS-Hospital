@@ -36,7 +36,7 @@ function PatientPrescription(){
     return <div className="container">
     <div className="card" style={{ boxShadow: "0px 0px 5px grey" }}>
 
-        <div className="card-body">
+        <div className="card-body"style={{width: "1500px"}}>
         <div><h4 className="card-title">
                     prescriptions
                 </h4>

@@ -98,7 +98,7 @@ function Login()
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-                                    <input type={"text"} name="password" value={loginDetails.password} placeholder="Enter Your password" onChange={handleChange} className="form-control" required/>
+                                    <input type={"password"} name="password" value={loginDetails.password} placeholder="Enter Your password" onChange={handleChange} className="form-control" required/>
 
             </div>
             <input type={"button"} value="Login" className="btn btn-primary" onClick={onSubmit} />

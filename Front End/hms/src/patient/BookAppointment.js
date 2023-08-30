@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import book from "../images/appointment.jpg";
+import book from "../images/appointment1.jpeg";
 function BookAppointment() {
     const navigate = useNavigate();
 

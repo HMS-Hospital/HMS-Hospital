@@ -26,6 +26,7 @@ import Admin from "./admin/Admin";
 import PatientList from "./admin/PatientList";
 import AppointmentList from "./admin/AppointmentList";
 import HomePage from "./component/home";
+import PatientBill from "./patient/Bills";
 
 
 
@@ -60,6 +61,8 @@ function App() {
                     <Route path="appointment" element={<PatientAppointment />} />
                     <Route path="prescription" element={<PatientPrescription />} />
                     <Route path="prescriptionsDetails/:id" element={<PatientPrescriptionsDetails />} />
+                    <Route path="bill" element={<PatientBill />} />
+
                 </Route>
             </Route>
               {/* <Route path="/admin" element={<ProtectedRoute />}>  */}
