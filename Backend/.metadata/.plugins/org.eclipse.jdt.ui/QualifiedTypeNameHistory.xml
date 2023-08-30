@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.modelmapper.convention.MatchingStrategies"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.mapper.Mapper"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Doctor"/>
+    <fullyQualifiedTypeName name="com.app.dto.DoctorRegistrationDTO"/>
+    <fullyQualifiedTypeName name="com.app.dao.UserDao"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.app.dto.CreatePrescriptionDetailsDTO"/>
+    <fullyQualifiedTypeName name="com.app.pojos.PrescriptionDetails"/>
+    <fullyQualifiedTypeName name="com.app.dao.PrescriptionDetailsDao"/>
+    <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Appointment"/>
+    <fullyQualifiedTypeName name="com.app.dao.AppointmentDao"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Prescription"/>
+    <fullyQualifiedTypeName name="com.app.dto.PrescriptionDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="io.swagger.v3.oas.models.responses.ApiResponse"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="com.app.dto.ApiResponse"/>
+    <fullyQualifiedTypeName name="com.app.pojos.Medicine"/>
+    <fullyQualifiedTypeName name="com.app.dao.MedicineDao"/>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.app.pojos.UserValidity"/>
+</qualifiedTypeNameHistroy>

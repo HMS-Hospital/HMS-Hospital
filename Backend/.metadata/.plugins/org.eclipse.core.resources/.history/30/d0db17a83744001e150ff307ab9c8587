@@ -1,0 +1,10 @@
+package com.app.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.app.pojos.PrescriptionDetails;
+
+public interface PrescriptionDao extends JpaRepository<PrescriptionDetails, Integer> {
+//	public List<Prescription> findByPatient(Patient patient);
+//	public List<Prescription> findByDoc(Doctor doc);
+}
+
