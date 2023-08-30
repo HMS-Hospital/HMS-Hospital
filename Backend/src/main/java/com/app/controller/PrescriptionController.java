@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dao.MedicineDao;
+import com.app.dao.PatientDao;
 import com.app.dto.CreatePrescriptionDTO;
 import com.app.dto.CreatePrescriptionDetailsDTO;
 import com.app.dto.PrescriptionDTO;
 import com.app.dto.PrescriptionDetailsDTO;
 import com.app.pojos.Doctor;
+import com.app.pojos.Medicine;
 import com.app.pojos.Patient;
 import com.app.pojos.Prescription;
 import com.app.service.AppointmentService;
@@ -39,6 +43,9 @@ public class PrescriptionController {
 	
 	@Autowired
 	private AppointmentService appointService;
+	
+	@Autowired
+	public MedicineDao medicineDao;
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> addPresciption(@RequestBody CreatePrescriptionDTO prep,@RequestParam int apptid){
@@ -92,6 +99,8 @@ public class PrescriptionController {
 		System.out.println(prep);
 		return ResponseEntity.ok(presserve.savePrescriptionDetails(prep,id));
 	}
+	
+	
 	
 	//
 	

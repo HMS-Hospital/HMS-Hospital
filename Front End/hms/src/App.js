@@ -9,6 +9,8 @@ import Footer from "./Footer";
 import PatientProfile from "./patient/PatientProfile";
 import PatientAppointment from "./patient/Appointments";
 import PatientPrescription from "./patient/Prescriptions";
+import PatientPrescriptionsDetails from "./patient/PrescriptionsDetails";
+
 import Register from "./Register";
 import Doctor_register from "./Doctor_registration copy";
 import BookAppointment from "./patient/BookAppointment";
@@ -48,6 +50,7 @@ function App() {
                     <Route path="profile" element={<PatientProfile />} />
                     <Route path="appointment" element={<PatientAppointment />} />
                     <Route path="prescription" element={<PatientPrescription />} />
+                    <Route path="prescriptionsDetails/:id" element={<PatientPrescriptionsDetails />} />
                 </Route>
             </Route>
         </Routes>

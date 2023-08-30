@@ -9,6 +9,8 @@ var prescription_id;
 
 function DoctorPrescription(){
     var { id } = useParams();
+    var [medicine, setMedicine] = useState([]);
+
 
     
    
@@ -45,6 +47,16 @@ function DoctorPrescription(){
             // Handle errors
             console.error('An error occurred:', error);
           });
+
+          axios.get("http://localhost:7070/prescription/getmedicines", {
+
+        }).then((response) => {
+          /////// 
+          ///////
+          setMedicine([...response.data]);
+          //////
+          ////////
+        })
     }, [])
 
     const [formData, setFormData] = useState({
@@ -79,6 +91,7 @@ function DoctorPrescription(){
         // Iterate over each object in CreatePrescriptionDetailsDTO
         for (const prescriptionDetail of formData.CreatePrescriptionDetailsDTO) {
           try {
+            console.log(prescriptionDetail)
             // Perform an Axios POST request
             const response = await axios.post(`http://localhost:7070/prescription/detailsadding/${prescription_id}`, prescriptionDetail);
       
@@ -121,48 +134,82 @@ function DoctorPrescription(){
             <ul>
                 {formData.CreatePrescriptionDetailsDTO.map((CreatePrescriptionDetailsDTO, index) => (
                     <li>
-                        medicine
+                        {/* medicine
                         <input
                             type="text"
                             value={CreatePrescriptionDetailsDTO.m_id}
                             onChange={(e) => handleMedicineChange(index, 'm_id', e.target.value)}
                             placeholder="m_id"
-                        />
-                        <br></br>
-                         <br></br>
+                        /> */}
+                        
+
+                                  <div className="row">
+                                   
+                                            <p className="form-label">Medicine</p>
+                                            <select className="form-select" aria-label="Default select example" name="m_id"  onChange={(e) => handleMedicineChange(index, 'm_id', e.target.value)}>
+                                           
+                                               
+                                               
+                                                <option value={"default"}>
+                                                    Select Medicine
+                                                </option>
+                                                {
+                                                    medicine.map(medicine => {
+                                                        return <option value={medicine.id} key={medicine.id}>
+                                                            {medicine.name}
+                                                        </option>
+                                                        
+
+                                                        
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
+                                  
+                        
+                       
                          
-                        Quantity
+                        <div className="row">
+                                   
+                                   <p className="form-label">Quantity</p>
                         {/* <input
                             type="text"
                             value={CreatePrescriptionDetailsDTO.quantity}
                             onChange={(e) => handleMedicineChange(index, 'quantity', parseInt(e.target.value))}
                             placeholder="Quantity"
                         /> */}
+
                             <input
                             type="text"
                             value={CreatePrescriptionDetailsDTO.quantity}
                             onChange={(e) => handleMedicineChange(index, 'quantity', e.target.value)}
                             placeholder="ho ja bhai"
                         />
-                        <br></br>
-                        <br></br>
-                        Dosage
-                        <input
+                        </div>
+                      
+                        <div className="row">
+                                   
+                                   <p className="form-label">Dosage</p>                        <input
                             type="text"
                             value={CreatePrescriptionDetailsDTO.dosage}
                             onChange={(e) => handleMedicineChange(index, 'dosage', e.target.value)}
                             placeholder="Dosage"
                         />
-                         <br></br>
-                         <br></br>
-                        Duration
+                        </div>
+                         
+                         <div className="row">
+                                   
+                                   <p className="form-label">Duration</p>
                         <input
                             type="text"
                             value={CreatePrescriptionDetailsDTO.duration}
                             onChange={(e) => handleMedicineChange(index, 'duration', e.target.value)}
                             placeholder="Duration"
                         />
-                
+                                                </div>
+
+                <br></br>
+                <br></br>
                     </li>
                 ))}
             </ul>
