@@ -13,5 +13,8 @@ import com.app.pojos.UserValidity;
 public interface DoctorDao extends JpaRepository<Doctor, Integer>{
 	public Optional<Doctor> findDoctorByUser(User u);
 	public List<Doctor> findByDept(Department d);
+	
+//	@Query "select * from com.app.pojos.User where validity =?";
 	public List<Doctor> findByUserValidity(UserValidity validity);
+	
 }

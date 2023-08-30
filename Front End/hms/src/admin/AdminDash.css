@@ -1,0 +1,64 @@
+/* AdminDashboard.css */
+.admin-dashboard {
+    display: flex;
+    margin-top: -40px;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }
+  
+  .attractive-text {
+    font-family: 'Your Attractive Font', Arial, sans-serif;
+    font-size: 36px;
+    color: #333;
+    font-size: 4rem;
+    color: #020202;
+    margin-top: 15%;
+  }
+  
+  .bottom-options {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .options1 {
+    width: 23%;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(10, 10, 10, 10);
+  }
+  
+  .options1-text {
+    font-size: 4rem;
+    color: #020202;
+    margin-top: 15%;
+  }
+  
+  /* Add more classnames and styles as needed */
+  

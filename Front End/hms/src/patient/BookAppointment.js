@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import book from "../images/book.png";
+import book from "../images/appointment.jpg";
 function BookAppointment() {
     const navigate = useNavigate();
 
-    var [details, setDetails] = useState({ p_id: "", d_id: "", specialization: "", appoint: "" })
+    var [details, setDetails] = useState({ p_id: "", d_id: "", specialization: "", appoint: ""})
     var [appointdate,setAppointdate]=useState("");
     var [departments, setDepartments] = useState([]);
     var [doctors, setDoctors] = useState([]);
@@ -22,7 +22,7 @@ function BookAppointment() {
 
     var handleChange = (args) => {
         debugger;
-        if (args.target.name == "appoint") {
+        if (args.target.name == "appoint" ) {
             setAppointdate(args.target.value);
             var date = "";
             date = args.target.value;
@@ -69,10 +69,10 @@ function BookAppointment() {
 
     }
 
-    return <div className="container-fluid" style={{ backgroundColor: "lightblue" }}>
+    return <div className="container-fluid" >
         <div className="row justify-content-center">
             <div className="col-sm-6" style={{ marginTop: "40px" }}>
-                <div className="card ">
+                <div className="card "style={{ borderRadius: "30px" }}>
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="card-body">
@@ -125,7 +125,18 @@ function BookAppointment() {
                                     <div className="col-sm-10">
                                         <div className="form-group">
                                             <p className="form-label">Appointment Date</p>
-                                            <input type={"date"} name={"appoint"} value={appointdate} onChange={handleChange} className={"input-group date"} />
+
+                    
+                                  
+
+
+
+
+
+
+                                            <input type={"datetime-local"} name={"appoint"} value={appointdate} onChange={handleChange} step={1800} className={"input-group date"} />
+                                            {/* <input type={"time"} name={"time"} value={time} onChange={handleChange} className={"input-group date"} /> */}
+                                                
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +151,7 @@ function BookAppointment() {
                             </div>
                         </div>
                         <div className="col-sm-6">
-                            <img src={book} style={{ height: "100%", width: "100%" }}></img>
+                            <img src={book} style={{ height: "100%", width: "100%" , borderRadius:"30px"}}></img>
                         </div>
                     </div>
                 </div>

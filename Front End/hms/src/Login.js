@@ -22,45 +22,37 @@ function Login()
             return data.json()
         }).then(result => {
             debugger;
-          if(result.message=="user is inactove"|| result.message=="no such user exist")
-          {
-            setLoginDetails({ username: "", password: "" })
-            navigate("/login")
-          }
-          else
-          {
             if (result.role == "PATIENT") {
-              sessionStorage.setItem("id", result.id);
-              sessionStorage.setItem("username", result.username);
-              sessionStorage.setItem("name", result.name);
-              sessionStorage.setItem("type", result.type);
-              sessionStorage.setItem("gender", result.gender);
-              sessionStorage.setItem("address", result.address);
-              sessionStorage.setItem("dob", result.dob);
-              sessionStorage.setItem("state", result.state);
-              sessionStorage.setItem("city", result.city);
-              sessionStorage.setItem("pincode", result.pincode);
-              sessionStorage.setItem("mobileno", result.mobileNo);
-              sessionStorage.setItem("emailid", result.emailid);
-              sessionStorage.setItem("isLoggedIn", "true");
-              console.log(result)
-              navigate("/patient/profile")
-          }
-          else{
-              sessionStorage.setItem("id", result.id);
-              sessionStorage.setItem("username", result.username);
-              sessionStorage.setItem("name", result.name);
-              sessionStorage.setItem("specialization", result.specialization);
-              sessionStorage.setItem("gender", result.gender);
-              sessionStorage.setItem("joinDate", result.joinDate);
-              sessionStorage.setItem("dob", result.dob);
-              sessionStorage.setItem("mobileno", result.mobileNo);
-              sessionStorage.setItem("emailid", result.emailid);
-              sessionStorage.setItem("isLoggedIn", "true");
-              console.log(result)
-              navigate("/doctor/profile")
-          }
-          }
+                sessionStorage.setItem("id", result.id);
+                sessionStorage.setItem("username", result.username);
+                sessionStorage.setItem("name", result.name);
+                sessionStorage.setItem("type", result.type);
+                sessionStorage.setItem("gender", result.gender);
+                sessionStorage.setItem("address", result.address);
+                sessionStorage.setItem("dob", result.dob);
+                sessionStorage.setItem("state", result.state);
+                sessionStorage.setItem("city", result.city);
+                sessionStorage.setItem("pincode", result.pincode);
+                sessionStorage.setItem("mobileno", result.mobileNo);
+                sessionStorage.setItem("emailid", result.emailid);
+                sessionStorage.setItem("isLoggedIn", "true");
+                console.log(result)
+                navigate("/patient/profile")
+            }
+            else{
+                sessionStorage.setItem("id", result.id);
+                sessionStorage.setItem("username", result.username);
+                sessionStorage.setItem("name", result.name);
+                sessionStorage.setItem("specialization", result.specialization);
+                sessionStorage.setItem("gender", result.gender);
+                sessionStorage.setItem("joinDate", result.joinDate);
+                sessionStorage.setItem("dob", result.dob);
+                sessionStorage.setItem("mobileno", result.mobileNo);
+                sessionStorage.setItem("emailid", result.emailid);
+                sessionStorage.setItem("isLoggedIn", "true");
+                console.log(result)
+                navigate("/doctor/profile")
+            }
 
         });
     }
@@ -93,12 +85,12 @@ function Login()
           <form>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
-                                     <input type={"text"} name="username" value={loginDetails.username}  placeholder="Enter Your Username" onChange={handleChange} className="form-control" required/>
+                                     <input type={"text"} name="username" value={loginDetails.username} placeholder="Enter Your Username" onChange={handleChange} className="form-control"></input>
 
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-                                    <input type={"text"} name="password" value={loginDetails.password} placeholder="Enter Your password" onChange={handleChange} className="form-control" required/>
+                                    <input type={"password"} name="password" value={loginDetails.password} placeholder="Enter Your password" onChange={handleChange} className="form-control"></input>
 
             </div>
             <input type={"button"} value="Login" className="btn btn-primary" onClick={onSubmit} />

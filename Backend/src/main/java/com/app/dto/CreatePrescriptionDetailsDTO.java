@@ -5,7 +5,7 @@ public class CreatePrescriptionDetailsDTO {
   private int m_id;
   private String dosage;
   private String duration;
-  private int quantity;
+  private int qtantiy;
 
   
 public int getM_id() {
@@ -27,10 +27,10 @@ public void setDuration(String duration) {
 	this.duration = duration;
 }
 public int getQtantiy() {
-	return quantity;
+	return qtantiy;
 }
 public void setQtantiy(int qtantiy) {
-	this.quantity = qtantiy;
+	this.qtantiy = qtantiy;
 }
   
   

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.app.pojos.Role;
 import com.app.pojos.UserValidity;
 import com.app.service.AppointmentService;
 import com.app.service.DoctorService;
+import com.app.service.UserService;
 
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -32,6 +34,11 @@ public class DoctorController {
 	private DoctorService doctorService;
 	@Autowired
 	private AppointmentService appointmentService;
+	
+	@Autowired
+	private UserService userService;
+	
+	
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> addDoctor(@RequestBody Doctor details){
@@ -72,6 +79,12 @@ public class DoctorController {
 	
 	@GetMapping("/showall")
 	public ResponseEntity<?> getAllDoctors(){
-		return ResponseEntity.ok(doctorService.getAllDoctors().stream().map(doctor->new DoctorDTO(doctor.getId(),doctor.getName(),doctor.getUser().getId())).collect(Collectors.toList()));
+		
+		return ResponseEntity.ok(doctorService.getAllDoctors().stream().map(doctor->new DoctorDTO(doctor.getId(),doctor.getName(),doctor.getMobileNo(),doctor.getGender(),doctor.getSpecialization(),doctor.getJoinDate(),doctor.getUser().getId())).collect(Collectors.toList()));
 	}
+//	@DeleteMapping("/delete/{id}")
+//	public ResponseEntity<?> deleteDoctor(@PathVariable int id){
+//		doctorService.deleteDoctor(id);
+//		return ResponseEntity.ok("deleted");
+//	}
 }

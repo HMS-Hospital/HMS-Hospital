@@ -1,6 +1,10 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function PatientAppointment() {
+        const nav = useNavigate();
+
     var [appointments, setAppointments] = useState([]);
     var [status,setStatus] = useState("");
     useEffect(() => {
@@ -24,13 +28,14 @@ function PatientAppointment() {
     }
 
     var nothing = (id)=>{
-                        window.alert("pay karne ka baki hai filal")
-    }
+        window.alert("ridirecting to pay bill")
+        nav("/patient/bill");
+}
 
     return <div className="container">
         <div className="card" style={{ boxShadow: "0px 0px 5px grey" }}>
 
-            <div className="card-body">
+            <div className="card-body" style={{width: "1500px"}}>
                 <h4 className="card-title">
                     Appointments
                 </h4>
@@ -73,7 +78,7 @@ function PatientAppointment() {
                                             </td>
                                             <td>
                                                 {
-                                                    appointment.status=="ATTENDED" || appointment.status=="CANCELLED"|| appointment.status=="ATTENDED_AND_PRESCRIP"||appointment.status=="ATTENDED_AND_BILL_GENERATED"?appointment.status=="ATTENDED_AND_BILL_GENERATED"?<input type={"button"} value={"pay"} className='btn btn-success' onClick={()=>{
+                                                    appointment.status=="ATTENDED" || appointment.status=="CANCELLED"|| appointment.status=="ATTENDED_AND_PRESCRIP"?appointment.status=="ATTENDED_AND_PRESCRIP"?<input type={"button"} value={"pay"} className='btn btn-success' onClick={()=>{
                                                         nothing(appointment.id)
                                                     }}></input> :"-" :<input type={"button"} value={"Cancel"} className='btn btn-danger' onClick={()=>{
                                                         cancel(appointment.id)

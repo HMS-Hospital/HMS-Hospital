@@ -61,9 +61,13 @@ public class DoctorDTO {
 		this.name=name;
 	}
 	
-	public DoctorDTO(int id,String name,int user_id) {
+	public DoctorDTO(int id,String name,String mobileNo, Gender gender, String specialization, LocalDate joinDate,int user_id) {
 		this.id=id;
 		this.name=name;
+		this.mobileNo=mobileNo;
+		this.gender = gender;
+		this.specialization =specialization;
+		this.joinDate = joinDate;
 		this.user_id=user_id;
 	}
 	

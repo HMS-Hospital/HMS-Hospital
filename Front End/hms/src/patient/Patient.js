@@ -2,7 +2,7 @@ import { Route,Routes,Link, Outlet } from "react-router-dom"
 
 
 function Patient() {
-    return <div style={{backgroundColor:"lightgray"}}>
+    return <div>
         <div className="container-fluid">
             <div className="row">
                 <div className="col-sm-2">

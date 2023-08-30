@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer className="footer bg-dark text-white">
             <hr></hr>
-          <div className="container">
+          <div className="container" style={{minHeight : "0px"}}>
             <div className="row">
               <div className="col-md-6">
                 <h5>About Us</h5>
