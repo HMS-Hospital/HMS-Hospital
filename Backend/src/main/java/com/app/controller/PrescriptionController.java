@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.CreatePrescriptionDTO;
+import com.app.dto.CreatePrescriptionDetailsDTO;
 import com.app.dto.PrescriptionDTO;
 import com.app.dto.PrescriptionDetailsDTO;
 import com.app.pojos.Doctor;
@@ -41,8 +42,20 @@ public class PrescriptionController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<?> addPresciption(@RequestBody CreatePrescriptionDTO prep,@RequestParam int apptid){
+		System.out.println("happyBirthday : "+apptid);
+		//int appptid=Integer.parseInt(apptid);
 		appointService.prescriptionCreated(apptid);
-		return ResponseEntity.ok(presserve.savePrescription(prep));
+	PrescriptionDTO p =	presserve.savePrescription(prep,apptid);
+	System.out.println("original prescription : "+p);
+	return ResponseEntity.ok(p);
+	}
+	
+	@GetMapping("/details/{id}")
+	public ResponseEntity<?> getPrescriptionDetailsByprescriptiontid(@PathVariable int id){
+		Prescription p = presserve.getPrescriptionById(id);
+	
+		return ResponseEntity.ok(new PrescriptionDTO(p.getId(), p.getDoc().getName(),p.getPatient().getName(),p.getDate(),p.getPrescriptiondetails().stream()
+				.map((ps)->new PrescriptionDetailsDTO(ps.getId(), ps.getMedicineid().getName(), ps.getDosage(), ps.getDuration(), ps.getQuantity())).collect(Collectors.toList())));
 	}
 	
 	@GetMapping("/show/{id}") 
@@ -66,17 +79,20 @@ public class PrescriptionController {
 //				.collect(Collectors.toList()));
 	}
 	
-	@GetMapping("/details/{id}")
-	public ResponseEntity<?> getPrescriptionDetailsByprescriptiontid(@PathVariable int id){
-		Prescription p = presserve.getPrescriptionById(id);
-	
-		return ResponseEntity.ok(new PrescriptionDTO(p.getId(), p.getDoc().getName(), p.getPatient().getName(),p.getDate(),p.getPrescriptiondetails().stream()
-				.map((ps)->new PrescriptionDetailsDTO(ps.getId(), ps.getMedicineid().getName(), ps.getDosage(), ps.getDuration(), ps.getQuantity())).collect(Collectors.toList())));
-	}
+
 	
 	@GetMapping("/getmedicines")
 	public ResponseEntity<?> getAllMedicines(){
 		return ResponseEntity.ok(presserve.getMedicines());
 	}
+	
+	//
+	@PostMapping("/detailsadding/{id}")
+	public ResponseEntity<?> addPresciptionDetails(@RequestBody CreatePrescriptionDetailsDTO prep,@PathVariable int  id){
+		System.out.println(prep);
+		return ResponseEntity.ok(presserve.savePrescriptionDetails(prep,id));
+	}
+	
+	//
 	
 }
