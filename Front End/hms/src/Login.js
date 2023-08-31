@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './login.css';
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify'
 
 //import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 import Header from './Header';
@@ -25,6 +26,7 @@ function Login()
           if(result.message=="user is inactove"|| result.message=="no such user exist")
           {
             setLoginDetails({ username: "", password: "" })
+            toast.error('fail')
             navigate("/login")
           }
           else
@@ -44,9 +46,10 @@ function Login()
               sessionStorage.setItem("emailid", result.emailid);
               sessionStorage.setItem("isLoggedIn", "true");
               console.log(result)
+              toast.success("welcome patient")
               navigate("/patient/profile")
           }
-          else{
+          else if (result.role == "DOCTOR"){
               sessionStorage.setItem("id", result.id);
               sessionStorage.setItem("username", result.username);
               sessionStorage.setItem("name", result.name);
@@ -58,7 +61,11 @@ function Login()
               sessionStorage.setItem("emailid", result.emailid);
               sessionStorage.setItem("isLoggedIn", "true");
               console.log(result)
+              toast.success("welcome doctor")
               navigate("/doctor/profile")
+          }
+          else{
+            navigate("/adminDash")
           }
           }
 

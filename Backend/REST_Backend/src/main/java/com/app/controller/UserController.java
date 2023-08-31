@@ -44,7 +44,7 @@ public class UserController {
 		String username = request.getUsername();
 		String password = request.getPassword();
 		if(username.equals("ADMIN") && password.equals("ADMIN")) {
-			return ResponseEntity.ok(new Admin("Admin",Role.ADMIN));
+			return ResponseEntity.ok(new Admin("ADMIN",Role.ADMIN));
 		}
 		if(username.equals("RECEPTION") && password.equals("RECEPTION"))
 			return ResponseEntity.ok(new Receptionist("Reception",Role.RECEPTIONIST));

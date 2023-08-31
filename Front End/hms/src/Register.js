@@ -2,6 +2,7 @@
 import {  useState } from "react";
 import { Link ,useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { toast } from 'react-toastify'
 //import { toast } from 'react-toastify'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 // import './comman.css';
@@ -87,6 +88,7 @@ console.log(specificuser)
 })
 .then(function (response) {
     //console.log(response.data);
+    toast.success("registred patient")
     nav("/login");
     
 })

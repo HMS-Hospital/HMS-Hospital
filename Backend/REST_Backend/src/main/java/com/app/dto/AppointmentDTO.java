@@ -12,7 +12,7 @@ public class AppointmentDTO {
 	private int id;
 	private String patientname;
 	private String doctorname;
-	private LocalDate appoint;
+	private LocalDateTime appoint;
 	private Appstatus status;
 	private int pid;
 	
@@ -20,7 +20,7 @@ public class AppointmentDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AppointmentDTO(int id, String patientname, LocalDate appoint, Appstatus status,int pid) {
+	public AppointmentDTO(int id, String patientname, LocalDateTime appoint, Appstatus status,int pid) {
 		this.id = id;
 		this.patientname = patientname;
 		this.appoint = appoint;
@@ -36,7 +36,7 @@ public class AppointmentDTO {
 		this.pid = pid;
 	}
 	
-	public AppointmentDTO(int id, LocalDate appoint, String doctorname,Appstatus status) {
+	public AppointmentDTO(int id, LocalDateTime appoint, String doctorname,Appstatus status) {
 		this.id = id;
 		this.doctorname = doctorname;
 		this.appoint = appoint;
@@ -72,10 +72,10 @@ public class AppointmentDTO {
 	public void setPatientname(String patientname) {
 		this.patientname = patientname;
 	}
-	public LocalDate getAppoint() {
+	public LocalDateTime getAppoint() {
 		return appoint;
 	}
-	public void setAppoint(LocalDate appoint) {
+	public void setAppoint(LocalDateTime appoint) {
 		this.appoint = appoint;
 	}
 	public Appstatus getStatus() {

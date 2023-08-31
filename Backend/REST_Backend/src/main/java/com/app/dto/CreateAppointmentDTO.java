@@ -10,8 +10,8 @@ public class CreateAppointmentDTO {
 	private int specialization;
 	private int d_id;
 	private int p_id;
-	@JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
-	private LocalDate appoint;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",shape = Shape.STRING)
+	private LocalDateTime appoint;
 	
 	public int getSpecialization() {
 		return specialization;
@@ -31,10 +31,10 @@ public class CreateAppointmentDTO {
 	public void setP_id(int p_id) {
 		this.p_id = p_id;
 	}
-	public LocalDate getAppoint() {
+	public LocalDateTime getAppoint() {
 		return appoint;
 	}
-	public void setAppoint(LocalDate appoint) {
+	public void setAppoint(LocalDateTime appoint) {
 		this.appoint = appoint;
 	}
 	
