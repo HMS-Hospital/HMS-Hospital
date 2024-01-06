@@ -12,7 +12,7 @@ public class BackEnd {
 	public static void main(String[] args) {
 		SpringApplication.run(BackEnd.class, args);
 	}
-	@Bean // equivalent to <bean id ..../> in xml file
+	@Bean // equivalent to <bean id ..../> in xml file // ModelMapper -> a library for mapping one object to another,  typically used for dto
 	public ModelMapper mapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -20,3 +20,7 @@ public class BackEnd {
 	}
 //latest
 }
+//@Bean
+//- is used to define spring bean in your application context / project.
+//- it is method level annotation
+//- spring beans are objects which are created annd manged by spring container.
